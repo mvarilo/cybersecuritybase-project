@@ -1,6 +1,6 @@
 # cybersecuritybase-project
 
-[Application repository here](https://github.com/mvarilo/cybersecuritybase-project)
+[Application repository here](https://github.com/mvarilo/cybersecuritybase-project). This document is used as project README, recommend to be viewed from Github for better readability.
 
 Course project implementing 5 security issues from [OWASP 2017 Top 10](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf).
 
@@ -12,6 +12,9 @@ git clone https://github.com/mvarilo/cybersecuritybase-project
 cd cybersecuritybase-project
 mvn spring-boot:run
 ```
+
+It can also be ran by opening the project in NetBeans and running it from there. The application runs as localhost:8080.
+
 
 ## Issues
 
