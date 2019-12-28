@@ -22,7 +22,7 @@ It can also be ran by opening the project in NetBeans and running it from there.
 
 #### Description
 
-Application has a security misconfiguration conserning h2-console which allows you to access the SQL database within the browser. It may be useful during development to have the ability to access the console but in production it's not safe.
+Application has a security misconfiguration concerning h2-console which allows you to access the SQL database within the browser. It may be useful during development to have the ability to access the console but in production it's not safe.
 
 #### Reproduction
 
@@ -96,7 +96,7 @@ Application permits brute force or other automated attacks with weak, default or
 1. Navigate to Java package sec.project.config's class SecurityConfiguration.java
 2. Replace line 'http.csrf().disable();' with 'http.csrf();'. This will require you to provide a CSRF token when you are handling data and as such you're not able to figure out what the password is by fuzzing.
 
-However that's far from a complete solution. Other fixes would be to require accounts to have more complex passwords and recording how many times someone fails to login from the same IP. After a certain amount of attemps IP would be blocked from trying to log in.
+However that's far from a complete solution. Other fixes would be to require accounts to have more complex passwords and recording how many times someone fails to login from the same IP. After a certain amount of attempts IP would be blocked from trying to log in.
 
 ### FLAW 5: A5:2017-Broken Access Control
 
