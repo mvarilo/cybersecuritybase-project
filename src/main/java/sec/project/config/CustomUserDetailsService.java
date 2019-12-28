@@ -1,6 +1,8 @@
 package sec.project.config;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.annotation.PostConstruct;
@@ -29,12 +31,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         Account account = new Account();
         account.setUsername("ted");
-        account.setPassword(passwordEncoder.encode("ted"));
+        account.setPassword(passwordEncoder.encode("1234"));
         accountRepository.save(account);
 
         account = new Account();
         account.setUsername("roger");
-        account.setPassword(passwordEncoder.encode("roger"));
+        account.setPassword(passwordEncoder.encode("qwerty"));
+        accountRepository.save(account);
+        
+        account = new Account();
+        account.setUsername("admin");
+        account.setPassword(passwordEncoder.encode("admin"));
         accountRepository.save(account);
     }
 
@@ -45,6 +52,13 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("No such user: " + username);
         }
 
+        List<SimpleGrantedAuthority> permissions = new ArrayList<>();
+        if (username.equals("admin")) {
+            permissions.add(new SimpleGrantedAuthority("ADMIN"));
+        } else {
+            permissions.add(new SimpleGrantedAuthority("USER"));
+        }
+
         return new org.springframework.security.core.userdetails.User(
                 account.getUsername(),
                 account.getPassword(),
@@ -52,6 +66,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 true,
                 true,
                 true,
-                Arrays.asList(new SimpleGrantedAuthority("USER")));
+                permissions);
     }
 }
